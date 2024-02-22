@@ -229,11 +229,6 @@ resource "aws_s3_bucket" "bucket" {
   bucket = var.destination_bucket_name
 }
 
-resource "aws_s3_bucket_acl" "bucket_acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
-}
-
 data "aws_iam_policy_document" "firehose_assume_role" {
   statement {
     effect = "Allow"
@@ -270,10 +265,17 @@ resource "aws_iam_role" "lambda_iam" {
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
 }
 
+data "archive_file" "lambda-2" {
+  type        = "zip"
+  source_file = "example.py"
+  output_path = "lambda.zip"
+}
+
 resource "aws_lambda_function" "lambda_processor" {
   filename      = "lambda.zip"
   function_name = "firehose_lambda_processor"
   role          = aws_iam_role.lambda_iam.arn
+  source_code_hash = data.archive_file.lambda-2.output_base64sha256
   handler       = "exports.handler"
   runtime       = "nodejs16.x"
 }

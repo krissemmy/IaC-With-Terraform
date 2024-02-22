@@ -4,7 +4,7 @@ variable "lambda_function_name" {
 
 variable "source_bucket_name" {
   type        = string
-  default     = "raw-data-bucket"
+  default     = "my-aws-raw-data-bucket"
   description = "The name for the source s3 bucket"
 }
 
