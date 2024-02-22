@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Project is about showing how Terraform is used as an Infrastructure as code to build resources in AWS using services like:
+This Project demonstrates the use of Terraform as Infrastructure as Code to provision resources in AWS, leveraging services such as:
 -  AWS SNS
 -  AWS Lambda (Lambda Function)
 -  AWS Glue (Glue Job)
@@ -12,8 +12,8 @@ This Project is about showing how Terraform is used as an Infrastructure as code
 
 
 
-## Code Overview
-The pipeline consists of the following components:
+### Code Overview
+The pipeline comprises the following components:
 
 - **S3 Bucket (data-bucket):** Stores raw data for processing.
 
@@ -46,15 +46,15 @@ The pipeline consists of the following components:
 ## Testing
 - Upload data to the data-bucket.
 - The etl-lambda function will be triggered and process the data, storing the results in the target-table.
-- Optionally You can publish messages to the user-updates topic to trigger notifications.
-- Optionally Send data to the test-stream for real-time processing and storage in the bucket.
+- Optionally, you can publish messages to the user-updates topic to trigger notifications.
+- Optionally, send data to the test-stream for real-time processing and storage in the bucket.
 
 
 ## Images
-Below are images that shows the different resources in AWS.
+Below are images that show the different resources in AWS.
 
 ![alt text](images/image.png)
-*Terminal Result of Successful Resource Creation*
+*Terminal Result of Successful Resources Creation*
 
 ![alt text](images/image-1.png)
 *Kinesis Data Stream*
@@ -63,7 +63,7 @@ Below are images that shows the different resources in AWS.
 *Kinesis Data Stream(detailed)*
 
 ![alt text](images/image-3.png)
-*Amazon Data FireHose*
+*Amazon Data Firehose*
 
 ![alt text](images/image-4.png)
 *Amazon Data FireHose(detailed)*
@@ -91,3 +91,20 @@ Below are images that shows the different resources in AWS.
 
 ![alt text](images/image-12.png)
 *Terminal Result of Resources Destroyed Successfully*
+
+
+### Additional Information
+
+In addition to the resources mentioned above, it's important to note the following:
+
+- Security Considerations: Ensure that appropriate IAM roles and policies are in place to restrict access to these resources based on the principle of least privilege.
+
+- Monitoring and Logging: Implement monitoring solutions such as CloudWatch alarms and CloudTrail logging to track resource usage, detect anomalies, and troubleshoot issues.
+
+- Cost Optimization: Regularly review the usage of these resources to optimize costs, considering options like Reserved Instances, Spot Instances, or utilizing AWS Cost Explorer for cost analysis.
+
+- Scaling: Evaluate the scalability of the infrastructure to handle increased workloads and consider implementing auto-scaling where applicable.
+
+- Backup and Disaster Recovery: Establish backup mechanisms for critical data stored in DynamoDB and S3 buckets, and devise a disaster recovery plan to ensure business continuity in case of failures.
+
+By following best practices in managing and maintaining these resources, you can ensure a robust and efficient infrastructure that meets your application's requirements while leveraging the power of Terraform and AWS services.
