@@ -16,14 +16,23 @@ This Project is about showing how Terraform is used as an Infrastructure as code
 The pipeline consists of the following components:
 
 - **S3 Bucket (data-bucket):** Stores raw data for processing.
+
 - **Lambda Function (etl-lambda):** Processes data uploaded to the S3 bucket and writes it to DynamoDB.
+
 - **DynamoDB Table (target-table):** Stores the processed data.
+
 - **Glue Job (my-glue):** Orchestrates the data processing logic defined in a Python script.
+
 - **SNS Topic (user-updates):** Publishes notifications about data processing events.
+
 - **Kinesis Stream (test-stream):** Streams data for real-time processing.
+
 - **Kinesis Firehose Delivery Stream (extended_s3_stream):** Delivers data from the Kinesis stream to an S3 bucket with additional processing using a Lambda function.
+
 - **S3 Bucket (bucket):** Stores the processed data delivered by the Kinesis Firehose.
+
 - **Lambda Function (firehose_lambda_processor):** Processes data delivered by the Kinesis Firehose before storing it in the S3 bucket.
+
 
 ## Deployment and Usage
 ### Prerequisites:
@@ -44,35 +53,41 @@ The pipeline consists of the following components:
 ## Images
 Below are images that shows the different resources in AWS.
 
-
+![alt text](images/image.png)
 *Terminal Result of Successful Resource Creation*
 
+![alt text](images/image-1.png)
+*Kinesis Data Stream*
 
-**
+![alt text](images/image-2.png)
+*Kinesis Data Stream(detailed)*
 
+![alt text](images/image-3.png)
+*Amazon Data FireHose*
 
-**
+![alt text](images/image-4.png)
+*Amazon Data FireHose(detailed)*
 
+![alt text](images/image-5.png)
+*DynamoDB Table*
 
-**
+![alt text](images/image-6.png)
+*DynamoDB Table(detailed)*
 
+![alt text](images/image-7.png)
+*Lambda Functions*
 
-**
+![alt text](images/image-8.png)
+*Lambda Function code*
 
+![alt text](images/image-9.png)
+*Glue Job*
 
-**
+![alt text](images/image-10.png)
+*SNS Topic*
 
+![alt text](images/image-11.png)
+*The Two S3 Buckets*
 
-**
-
-
-**
-
-
-**
-
-
-**
-
-
-**
+![alt text](images/image-12.png)
+*Terminal Result of Resources Destroyed Successfully*
